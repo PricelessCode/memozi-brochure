@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoIosFlash, IoIosMenu, IoIosClose } from "react-icons/io";
@@ -69,6 +69,7 @@ const NavMenus = styled.ul`
     justify-content: center;
     list-style: none;
     text-align: center;
+    transition: all 0.8s;
 
     @media only screen and (max-width: ${breakPoint}) {
         & {
@@ -86,7 +87,6 @@ const NavMenus = styled.ul`
             width: 100%;
             height: 30vh;
             opacity: 1;
-            transition: all 0.8s ease;
             z-index: 1;
         }
     }
@@ -113,10 +113,12 @@ const MenuItem = styled.li`
 const MenuLink = styled.a`
     font-size: 20px;
     color: white;
+    padding-bottom: 10px;
 
     &:hover {
-        color: #ffffa7;
-        border-bottom: 1px solid #ffffa7;
+        color: yellow;
+        
+        border-bottom: 1px solid yellow;
         transition: all 0.6s ease;
     }
 
@@ -133,6 +135,19 @@ function Navbar() {
     const handleClick = () => {
         setClicked(!clicked);
     };
+
+    
+    // Set Clicked to false if window is set back to +breakpoint
+    useEffect(() => {
+        const resizeEvent = window.addEventListener('resize', () => {
+            if (window.innerWidth >= parseInt(breakPoint)) {
+                setClicked(false);
+            }
+        })
+        return () => {
+            window.removeEventListener('resize', resizeEvent);
+        }
+    }, [])
 
     return (
         <>
