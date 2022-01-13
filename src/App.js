@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Hero from "./components/pages/Hero/Hero";
 import { GlobalStyle } from "./globalStyles";
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
         <>
             <GlobalStyle />
             <Navbar />
+            <Hero />
+            <div>sfsdf</div>
         </>
     );
 }
