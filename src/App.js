@@ -4,6 +4,7 @@ import Hero from "./components/pages/Hero/Hero";
 import { GlobalStyle } from "./globalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
+import Service from "./components/pages/Services/Service";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <GlobalStyle />
                 <Navbar />
                 <Hero />
+                <Service />
             </ThemeProvider>
         </>
     );

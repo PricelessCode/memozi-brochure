@@ -10,39 +10,49 @@ const whiteColor = ({ theme }) => theme.colors.white;
 const data = {
     heroMessage: "Memorize and Learn like thunder",
     CTAMessage:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
     CTAButtonText: "Get Started",
 };
 
-const breakPoint = "955px";
+const midBreakPoint = "1322px";
+const mobileBreakPoint = "955px";
 
 const HeroSection = styled.div`
-    padding: 160px 0;
+    padding: 100px 0;
     background: ${heroColor};
-    height: 45vh;
+
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+        padding: 60px 0;
+    }
 `;
 
 const HeroContainer = styled.div`
+    display: flex;
     z-index: 1;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1600px;
     margin-right: auto;
     margin-left: auto;
     padding-right: 50px;
     padding-left: 50px;
-    display: flex;
-    flex-wrap: wrap;
     align-content: stretch;
     align-items: center;
-    flex-wrap: wrap;
+
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
 `;
 
 const Row = styled.div`
     z-index: 1;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    align-content: stretch;
+
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
 `;
 
 const Col = styled.div`
@@ -50,23 +60,34 @@ const Col = styled.div`
     padding-right: 20px;
     padding-left: 20px;
     flex: 1;
-    max-width: 50%;
-    flex-basis: 50%;
+
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+        margin-bottom: 0;
+    }
 `;
 
 const HeroTextWrapper = styled.div`
-    padding-top: 0;
-    padding-bottom: 60px;
-    max-width: 600px;
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+        text-align: center;
+    }
 `;
 
 const HeroImageWrapper = styled.div`
+    @media only screen and (max-width: ${mobileBreakPoint}) {
+        display: none;
+    }
 `;
 
 const HeroMessage = styled.h1`
     color: ${whiteColor};
     font-size: 60px;
     margin-bottom: 30px;
+
+    @media only screen and (max-width: ${midBreakPoint}) {
+        font-size: 50px;
+    }
+
+    
 `;
 
 const HeroImage = styled.img`
@@ -77,12 +98,15 @@ const HeroImage = styled.img`
     border: 0;
     max-width: 100%;
     vertical-align: middle;
-    display: inline-block;
 `;
 
 const CTAMessage = styled.h4`
     color: ${whiteColor};
     margin-bottom: 50px;
+
+    @media only screen and (max-width: ${midBreakPoint}) {
+        font-size: 18px;
+    }
 `;
 
 const CTAWrapper = styled.div``;
@@ -141,7 +165,7 @@ function Hero() {
                     </Row>
                 </HeroContainer>
             </HeroSection>
-            <Wave viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+            <Wave viewBox="0 0 500 100" >
                 <WavePath d="M0,50 C100,150 250,0 500,70 L500,00 L0,0 Z"></WavePath>
             </Wave>
         </>
