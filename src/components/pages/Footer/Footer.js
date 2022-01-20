@@ -112,6 +112,7 @@ const MenuItemWrapper = styled.div`
     & a {
         margin-bottom: 5px;
         display: block;
+        cursor: pointer;
     }
 
     & a:hover {
