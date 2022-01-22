@@ -11,25 +11,29 @@ import styled from "styled-components";
 const navyColor = ({ theme }) => theme.colors.navy;
 const whiteColor = ({ theme }) => theme.colors.white;
 
-
-
 const breakPoint = "955px";
 
 const data = [
     {
         title: "About Us",
+        subMenu: ["Blog", "Testimonials", "Careers", "Investors"],
+    },
+    {
+        title: "Services",
+        subMenu: ["Mentors", "Students", "Classes", "Educations"],
+    },
+    {
+        title: "Plans",
         subMenu: [
-            "Blog",
-            "Testimonials",
-            "Careers",
-            "Investors",
-            "Terms of Service",
+            "For Business",
+            "For Schools",
+            "For Teachers",
+            "For Students",
         ],
     },
-
     {
-        title: "H",
-        subMenu: [],
+        title: "Help & FAQs",
+        subMenu: ["Support", "FAQs", "Get in touch", "Terms of Service"],
     },
 ];
 
@@ -74,13 +78,12 @@ const Row = styled.div`
     margin-bottom: 50px;
 
     @media only screen and (max-width: ${breakPoint}) {
-        
+        flex-direction: column;
     }
 `;
 
 const BrandCol = styled.div`
     flex: 1;
-
     & p {
         margin-bottom: 12px;
     }
@@ -88,11 +91,9 @@ const BrandCol = styled.div`
 
 const BrandLogo = styled.h2`
     margin-bottom: 10px;
-    
 `;
 
 const SocialWrapper = styled.div`
-
     & > * {
         margin-right: 10px;
     }
@@ -102,6 +103,11 @@ const MenuCol = styled.div`
     display: flex;
     flex: 2;
     justify-content: space-evenly;
+
+    @media only screen and (max-width: ${breakPoint}) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const MenuItemWrapper = styled.div`
@@ -110,8 +116,10 @@ const MenuItemWrapper = styled.div`
     }
 
     & a {
+        color: white;
         margin-bottom: 5px;
         display: block;
+        text-decoration: none;
         cursor: pointer;
     }
 
@@ -144,6 +152,23 @@ const CopyrightWrapper = styled.div`
     font-size: 14px;
 `;
 
+const FooterMenuFragment = ({ data }) => {
+    return (
+        <MenuCol>
+            {data.map((section, index) => {
+                return (
+                    <MenuItemWrapper>
+                        <h3>{section.title}</h3>
+                        {section.subMenu.map((menu) => {
+                            return <a href="/">{menu}</a>;
+                        })}
+                    </MenuItemWrapper>
+                );
+            })}
+        </MenuCol>
+    );
+};
+
 function Hero() {
     return (
         <>
@@ -170,41 +195,7 @@ function Hero() {
                                 <RedditIcon />
                             </SocialWrapper>
                         </BrandCol>
-                        <MenuCol>
-                            <MenuItemWrapper>
-                                <h3>About Us</h3>
-                                <a>Blog</a>
-                                <a>Testimonials</a>
-                                <a>Partners</a>
-                                <a>Investors</a>
-                                <a>Terms of Service</a>
-                            </MenuItemWrapper>
-                            <MenuItemWrapper>
-                                <h3>About Us</h3>
-                                <a>Blog</a>
-                                <a>Testimonials</a>
-                                <a>Partners</a>
-                                <a>Investors</a>
-                                <a>Terms of Service</a>
-                            </MenuItemWrapper>
-                            <MenuItemWrapper>
-                                <h3>About Us</h3>
-                                <a>Blog</a>
-                                <a>Testimonials</a>
-                                <a>Partners</a>
-                                <a>Investors</a>
-                                <a>Terms of Service</a>
-                            </MenuItemWrapper>
-                            <MenuItemWrapper>
-                                <h3>About Us</h3>
-                                <a>Blog</a>
-                                <a>Testimonials</a>
-                                <a>Partners</a>
-                                <a>Investors</a>
-                                <a>Terms of Service</a>
-                            </MenuItemWrapper>
-
-                        </MenuCol>
+                        <FooterMenuFragment data={data} />
                     </Row>
 
                     <CopyrightWrapper>
