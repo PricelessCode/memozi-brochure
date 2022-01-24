@@ -62,7 +62,7 @@ const FooterContainer = styled.div`
     flex-direction: column;
     z-index: 1;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1800px;
     margin-right: auto;
     margin-left: auto;
     padding-right: 50px;
@@ -70,6 +70,7 @@ const FooterContainer = styled.div`
     align-content: stretch;
     justify-content: center;
     align-items: center;
+
 `;
 
 const Row = styled.div`
@@ -87,6 +88,8 @@ const BrandCol = styled.div`
     & p {
         margin-bottom: 12px;
     }
+
+    
 `;
 
 const BrandLogo = styled.h2`
@@ -96,17 +99,6 @@ const BrandLogo = styled.h2`
 const SocialWrapper = styled.div`
     & > * {
         margin-right: 10px;
-    }
-`;
-
-const MenuCol = styled.div`
-    display: flex;
-    flex: 2;
-    justify-content: space-evenly;
-
-    @media only screen and (max-width: ${breakPoint}) {
-        flex-direction: column;
-        align-items: center;
     }
 `;
 
@@ -125,6 +117,15 @@ const MenuItemWrapper = styled.div`
 
     & a:hover {
         color: yellow;
+    }
+
+    flex: 1;
+
+    @media only screen and (max-width: ${breakPoint}) {
+        text-align: center;
+        flex-basis: 50%;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 `;
 
@@ -152,22 +153,32 @@ const CopyrightWrapper = styled.div`
     font-size: 14px;
 `;
 
-const FooterMenuFragment = ({ data }) => {
+const FooterSectionMenus = ({ className, data }) => {
     return (
-        <MenuCol>
-            {data.map((section, index) => {
-                return (
-                    <MenuItemWrapper>
-                        <h3>{section.title}</h3>
-                        {section.subMenu.map((menu) => {
-                            return <a href="/">{menu}</a>;
-                        })}
-                    </MenuItemWrapper>
-                );
-            })}
-        </MenuCol>
+        <div className={className}>
+            {data.map((col) => (
+                <MenuItemWrapper key={col.title}>
+                    <h3>{col.title}</h3>
+                    {col.subMenu.map((link) => (
+                        <a>{link}</a>
+                    ))}
+                </MenuItemWrapper>
+            ))}
+        </div>
     );
 };
+
+const StyledFooterSectionMenus = styled(FooterSectionMenus)`
+    display: flex;
+    flex: 2;
+    margin-left: 40px;
+    @media only screen and (max-width: ${breakPoint}) {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+`;
 
 function Hero() {
     return (
@@ -195,7 +206,7 @@ function Hero() {
                                 <RedditIcon />
                             </SocialWrapper>
                         </BrandCol>
-                        <FooterMenuFragment data={data} />
+                        <StyledFooterSectionMenus data={data} />
                     </Row>
 
                     <CopyrightWrapper>

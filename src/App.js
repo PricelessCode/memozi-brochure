@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import Service from "./components/pages/Services/Service";
 import Footer from "./components/pages/Footer/Footer.js"
+import Counter from "./components/pages/Counter/Counter";
 
 function App() {
     return (
@@ -15,6 +16,8 @@ function App() {
                 <Navbar />
                 <Hero />
                 <Service />
+
+                <Counter />
                 <Footer />
             </ThemeProvider>
         </>

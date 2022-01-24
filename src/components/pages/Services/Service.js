@@ -70,7 +70,7 @@ function Service() {
                 <SectionTitle>Service</SectionTitle>
                 <Row>
                     {data.map(({ title, img, desc }) => (
-                        <Col>
+                        <Col key={title}>
                             <Card title={title} img={img} desc={desc} />
                         </Col>
                     ))}
