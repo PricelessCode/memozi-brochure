@@ -26,16 +26,6 @@ function App() {
                 <Detail {...classDetail} highlightColor={theme.colors.violet}/>
                 <Testimonials />
                 <Counter />
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                <Detail {...flashCardDetail} highlightColor={theme.colors.red}/>
-                
                 <Subscribe />
                 <Footer />
             </ThemeProvider>
