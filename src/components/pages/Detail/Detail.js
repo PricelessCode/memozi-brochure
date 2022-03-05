@@ -17,7 +17,7 @@ const DetailContainer = styled.div`
     width: 100%;
     max-width: 1500px;
     margin: auto;
-    padding: 45px 70px;
+    padding: 100px 70px;
     color: white;
     justify-content: center;
 

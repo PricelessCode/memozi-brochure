@@ -3,15 +3,26 @@ import styled from "styled-components";
 import { FaQuoteRight } from "react-icons/fa";
 
 const CardContainer = styled.div`
-    width: 400px;
     overflow: hidden;
+    position: absolute;
     border-radius: 20px;
+    display: ${(props) => props.display};
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.3s ease-in-out;
+    transform: rotateY(${({ offset }) => offset * 30}deg)
+        scaleY(${({ offset }) => 1 + Math.abs(offset) * -0.4})
+        translateX(${({ offset }) => (offset / Math.abs(offset)) * -5}rem)
+        translateZ(${({ offset }) => Math.abs(offset) * -30}rem);
 `;
 
 const TestimonialBody = styled.div`
     padding: 40px 40px 80px;
     width: 100%;
+    background-color: hsl(
+        280deg,
+        30%,
+        calc(100% - ${({ offset }) => Math.abs(offset)} * 50%)
+    );
 `;
 
 const TestimonialContent = styled.p`
@@ -23,7 +34,7 @@ const TestimonialContent = styled.p`
 const StyledFaQuoteRight = styled(FaQuoteRight)`
     color: #555;
     float: right;
-    font-size:30px;
+    font-size: 30px;
 `;
 
 const TestimonialFooter = styled.div`
@@ -57,10 +68,10 @@ const Job = styled.h4`
     letter-spacing: 1px;
 `;
 
-function TestimonialCard({ pfp, quote, name, job }) {
+function TestimonialCard({ pfp, quote, name, job, isActive, offset, display }) {
     return (
-        <CardContainer>
-            <TestimonialBody>
+        <CardContainer isActive={isActive} offset={offset} display={display}>
+            <TestimonialBody offset={offset}>
                 <TestimonialContent>{quote}</TestimonialContent>
                 <StyledFaQuoteRight />
             </TestimonialBody>

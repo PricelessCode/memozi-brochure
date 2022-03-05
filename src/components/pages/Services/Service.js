@@ -33,8 +33,7 @@ const ServiceContainer = styled.div`
     max-width: 1600px;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 50px;
-    padding-left: 50px;
+    padding: 100px 50px;
     align-content: stretch;
     justify-content: center;
     align-items: center;
