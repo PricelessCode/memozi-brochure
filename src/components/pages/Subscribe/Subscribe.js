@@ -24,7 +24,6 @@ const SubscribeContainer = styled.div`
     align-content: stretch;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
     color: white;
     
 `;

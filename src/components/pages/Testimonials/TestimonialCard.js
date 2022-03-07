@@ -8,11 +8,12 @@ const CardContainer = styled.div`
     border-radius: 20px;
     display: ${(props) => props.display};
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    transition: all 0.3s ease-in-out;
-    transform: rotateY(${({ offset }) => offset * 30}deg)
+    transition: all 0.3s ease-out;
+    transform: rotateY(${({ offset }) => offset * 50}deg)
         scaleY(${({ offset }) => 1 + Math.abs(offset) * -0.4})
-        translateX(${({ offset }) => (offset / Math.abs(offset)) * -5}rem)
+        translateX(${({ offset }) => (offset / Math.abs(offset)) * -8}rem)
         translateZ(${({ offset }) => Math.abs(offset) * -30}rem);
+    filter: blur(${({ offset }) => Math.abs(offset) / 2}rem);
 `;
 
 const TestimonialBody = styled.div`
