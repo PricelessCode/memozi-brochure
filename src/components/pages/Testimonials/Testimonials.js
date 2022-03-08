@@ -93,6 +93,51 @@ const RightNavButton = styled.button`
     transform: translate(290%, -50%);
 `;
 
+const Indicator = styled.ul`
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style-type: none;
+    z-index: 2;
+`;
+
+const IndicatorItem = styled.li`
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+
+    &:not(:last-child) {
+        margin-right: 5px;
+    }
+
+    &::after {
+        position: absolute;
+        display: block;
+        content: "";
+
+        background: #fff;
+        width: 75%;
+        height: 75%;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        opacity: ${({ active }) => (active ? 1 : 0)};
+        transform: translate(-50%, -50%)
+            ${({ active }) => (active ? "scale(1, 1)" : "scale(0, 0)")};
+        transition: 0.3s;
+    }
+
+    &:hover::after {
+        transform: translate(-50%, -50%) scale(1, 1);
+        opacity: 1;
+    }
+`;
+
 function Testimonials() {
     const [active, setActive] = useState(2);
     const count = data.length;
@@ -131,6 +176,18 @@ function Testimonials() {
                             />
                         </RightNavButton>
                     )}
+
+                    <Indicator>
+                        {[...Array(count).keys()].map((item, i) => {
+                            return (
+                                <IndicatorItem
+                                    key={i}
+                                    active={active === i}
+                                    onClick={() => setActive(i)}
+                                />
+                            );
+                        })}
+                    </Indicator>
                 </Carousel>
             </TestimonialContainer>
         </TestimonialSection>
